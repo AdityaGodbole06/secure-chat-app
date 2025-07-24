@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Chat</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+  <h2>Secure Chat</h2>
+  <div id="mainContainer">
+    <div id="landingSection">
+      <button id="showRegisterBtn">Register</button>
+      <button id="showLoginBtn">Login</button>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerSection" style="display:none;">
+      <h3>Register</h3>
+      <input type="text" id="registerNickname" placeholder="Enter your nickname" />
+      <input type="password" id="registerPassword" placeholder="Enter your password" />
+      <input type="password" id="registerPassword2" placeholder="Confirm password" />
+      <button id="registerBtn">Register</button>
+      <button id="registerBackBtn">Back</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginSection" style="display:none;">
+      <h3>Login</h3>
+      <input type="text" id="loginNickname" placeholder="Enter your nickname" />
+      <input type="password" id="loginPassword" placeholder="Enter your password" />
+      <button id="loginBtn">Login</button>
+      <button id="loginBackBtn">Back</button>
+    </div>
+
+    <!-- Welcome Message -->
+    <div id="welcomeMsg" style="display:none; text-align:center; font-size:17px; margin-bottom:16px;"></div>
+
+    <!-- User List Section -->
+    <div id="userListSection" style="display:none;">
+      <h3>Active Users</h3>
+      <ul id="userList"></ul>
+    </div>
+
+    <!-- Chat Section -->
+    <div id="chatSection" style="display:none;">
+      <div id="chat"></div>
+      <input id="messageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+      <button id="sendBtn">Send</button>
+      <label class="switch">
+        <input type="checkbox" id="encryptToggle" checked />
+        <span class="slider"></span>
+      </label>
+      <span style="margin-left:8px; color:#2563eb; font-size:15px; vertical-align:middle;">Encrypt</span>
+    </div>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>

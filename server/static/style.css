@@ -1,0 +1,216 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f8fb;
+  color: #222;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+h2, h3 {
+  color: #2563eb;
+  text-align: center;
+  margin-top: 32px;
+}
+#mainContainer {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#chat {
+  height: 240px;
+  overflow-y: auto;
+  border: 1px solid #e0e7ef;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+input[type="text"], input[type="password"] {
+  width: 90%;
+  padding: 10px 12px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #b6cdfa;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #f4f8fb;
+  transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 1.5px solid #2563eb;
+  outline: none;
+  background: #fff;
+}
+button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 15px;
+  margin: 6px 4px 0 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  transition: background 0.2s;
+}
+button:hover {
+  background: #1742a0;
+}
+#userListSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#userListSection li {
+  background: #e7f0fe;
+  color: #2563eb;
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+}
+#userListSection li:hover {
+  background: #2563eb;
+  color: #fff;
+}
+#chatSection label {
+  margin-left: 8px;
+  color: #2563eb;
+  font-size: 14px;
+  vertical-align: middle;
+}
+#chatSection input[type="checkbox"] {
+  accent-color: #2563eb;
+  margin-right: 4px;
+}
+#landingSection, #registerSection, #loginSection, #userListSection, #chatSection {
+  margin-top: 0;
+}
+#landingSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+}
+#landingSection input[type="text"] {
+  width: 80%;
+  margin-bottom: 10px;
+  min-width: 180px;
+  max-width: 260px;
+}
+#landingSection button {
+  width: 120px;
+  margin-bottom: 8px;
+}
+.chat-bubble {
+  max-width: 55%;
+  padding: 10px 16px;
+  border-radius: 16px;
+  margin: 2px 0 16px 0;
+  position: relative;
+  word-break: break-word;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.06);
+  font-size: 15px;
+  clear: both;
+}
+.chat-bubble.me {
+  background: #2563eb;
+  color: #fff;
+  margin-left: auto;
+  margin-right: 0;
+  border-bottom-right-radius: 4px;
+  text-align: right;
+}
+.chat-bubble.other {
+  background: #fff;
+  color: #222;
+  margin-right: auto;
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  text-align: left;
+}
+.chat-username {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 2px;
+  font-weight: 500;
+  display: block;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+.chat-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.chat-row.me {
+  align-items: flex-end;
+}
+.chat-row.me .chat-username {
+  text-align: right;
+}
+.chat-row:not(.me) .chat-username {
+  text-align: left;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  vertical-align: middle;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 24px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(37,99,235,0.10);
+}
+input:checked + .slider {
+  background-color: #2563eb;
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+@media (max-width: 500px) {
+  #mainContainer {
+    max-width: 98vw;
+    padding: 16px 4vw 16px 4vw;
+  }
+  #chat {
+    height: 160px;
+  }
+} 
