@@ -383,7 +383,19 @@ app.get('/', (req, res) => {
             const btn = document.getElementById('tamperingBtn');
             btn.textContent = tamperingEnabled ? 'Disable Tampering' : 'Enable Tampering';
             btn.className = tamperingEnabled ? 'danger' : 'safe';
+            updateAttackControls();
         }
+
+        function updateAttackControls() {
+            const disabled = !tamperingEnabled;
+
+            document.querySelectorAll('.danger, .attack-control').forEach(btn => {
+                btn.disabled = disabled;
+                btn.style.opacity = disabled ? 0.5 : 1;
+                btn.style.cursor = disabled ? 'not-allowed' : 'pointer';
+            });
+        }
+
 
         function corruptNext() {
             sendProxyControl({ type: 'corrupt_next' });

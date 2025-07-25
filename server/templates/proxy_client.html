@@ -215,27 +215,27 @@
 
             <h3>Core Attacks</h3>
             <button onclick="toggleTampering()" id="tamperingBtn" class="danger">Enable Tampering</button>
-            <button onclick="corruptNext()" class="danger">Corrupt Next Message</button>
+            <button onclick="corruptNext()" class="danger attack-control">Corrupt Next Message</button>
             
             <h3>User Control</h3>
             <input type="text" id="blockUsername" placeholder="Username to block...">
-            <button onclick="blockUser()" class="danger">Block User</button>
-            <button onclick="unblockAll()" class="safe">Unblock All Users</button>
+            <button onclick="blockUser()" class="danger attack-control">Block User</button>
+            <button onclick="unblockAll()" class="safe attack-control">Unblock All Users</button>
             
             <h3>Message Manipulation</h3>
             <div class="input-group">
                 <input type="text" id="replaceFrom" placeholder="Find text...">
                 <input type="text" id="replaceTo" placeholder="Replace with...">
             </div>
-            <button onclick="addReplacement()" class="danger">Add Replace Rule</button>
+            <button onclick="addReplacement()" class="danger attack-control">Add Replace Rule</button>
             
             <h3>Network Delays</h3>
             <input type="number" id="delaySeconds" placeholder="Delay in seconds" min="1" max="60" value="5">
-            <button onclick="delayMessages()" class="danger">Delay Next Message</button>
+            <button onclick="delayMessages()" class="danger attack-control">Delay Next Message</button>
             
             <h3>Message Injection</h3>
             <input type="text" id="injectText" placeholder="Message to inject...">
-            <button onclick="injectMessage()">Inject Fake Message</button>
+            <button onclick="injectMessage()" class="attack-control">Inject Fake Message</button>
             
             <h3>Status</h3>
             <button onclick="getStatus()" class="safe">Refresh Status</button>
@@ -325,7 +325,19 @@
             const btn = document.getElementById('tamperingBtn');
             btn.textContent = tamperingEnabled ? 'Disable Tampering' : 'Enable Tampering';
             btn.className = tamperingEnabled ? 'danger' : 'safe';
+            updateAttackControls();
         }
+
+        function updateAttackControls() {
+            const disabled = !tamperingEnabled;
+
+            document.querySelectorAll('.danger, .attack-control').forEach(btn => {
+                btn.disabled = disabled;
+                btn.style.opacity = disabled ? 0.5 : 1;
+                btn.style.cursor = disabled ? 'not-allowed' : 'pointer';
+            });
+        }
+
 
         function corruptNext() {
             sendProxyControl({ type: 'corrupt_next' });
